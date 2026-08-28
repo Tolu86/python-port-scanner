@@ -1,0 +1,3 @@
+Target,Port,State,Service,Information,Version
+127.0.0.1,8080,OPEN,HTTP,HTTP/1.0 200 OK,PortScannerLab/1.0 Python/3.13.3
+127.0.0.1,9999,OPEN,Unknown,TEST-SERVER/1.0 Port-Scanner-Lab,

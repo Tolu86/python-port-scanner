@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Port Scanner | Security Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">⌁</div>
+
+                <div>
+                    <h2>PortScanner</h2>
+                    <span>Security Platform</span>
+                </div>
+            </div>
+
+            <nav>
+
+                <a href="#" class="nav-item active">
+                    <span>◉</span>
+                    Dashboard
+                </a>
+
+                <a href="#results" class="nav-item">
+                    <span>▣</span>
+                    Scan Results
+                </a>
+
+                <a href="#security" class="nav-item">
+                    <span>⚠</span>
+                    Security
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="system-status">
+                    <span class="status-dot"></span>
+
+                    <div>
+                        <strong>Scanner Online</strong>
+                        <small>System ready</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+
+            <!-- HEADER -->
+            <header>
+                <div class="header-inner">
+                    <div class="brand">
+                        <div>
+                            <h1>Security Dashboard</h1>
+                            <p>Network reconnaissance and security analysis</p>
+                        </div>
+                    </div>
+
+                    <div class="system-status header-status">
+                        <span class="status-dot"></span>
+                        Ready
+                    </div>
+                </div>
+            </header>
+
+
+            <!-- SCANNER CARD -->
+            <section class="scanner-card">
+
+                        <div class="panel-title">
+
+                            <div>
+                                <h2>New Scan</h2>
+                                <p>Enter a target to begin network analysis.</p>
+                            </div>
+
+                        </div>
+
+
+                        <form id="scanForm" class="scan-form" onsubmit="return false;">
+
+                            <div class="input-wrapper">
+                                <label for="target">Target</label>
+                                <input type="text" id="target" placeholder="IP address or hostname" autocomplete="off">
+                            </div>
+
+                            <div class="button-row">
+                                <button id="scanButton" class="scan-button">
+                                    <span id="scanButtonText">Start Scan</span>
+                                    <span id="scanLoader" class="loader hidden"></span>
+                                </button>
+                            </div>
+
+                            <div class="input-wrapper">
+                                <label>Scan Profile</label>
+                                <div class="profiles" style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+                                    <label class="option">
+                                        <input type="radio" name="profile" value="quick" checked>
+                                        <span><strong>Quick</strong><small>15 ports</small></span>
+                                    </label>
+                                    <label class="option">
+                                        <input type="radio" name="profile" value="common">
+                                        <span><strong>Common</strong><small>50+ ports</small></span>
+                                    </label>
+                                    <label class="option">
+                                        <input type="radio" name="profile" value="full">
+                                        <span><strong>Full</strong><small>65,535 ports</small></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="scan-options">
+                                <label class="option">
+                                    <input type="checkbox" id="udp">
+                                    <span>UDP Scan</span>
+                                </label>
+                            </div>
+
+                        </form>
+
+            </section>
+
+
+            <!-- PROGRESS -->
+            <section id="progressCard" class="progress-panel hidden">
+
+                <div class="progress-header">
+
+                    <div>
+                        <h2 id="progressStage">
+                            Starting scan
+                        </h2>
+
+                        <p id="progressMessage">
+                            Preparing scanner...
+                        </p>
+                    </div>
+
+                    <strong id="progressPercentage">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-track">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+
+                <div class="progress-info">
+                    <span>Ports checked: <strong id="progressCurrent">0</strong> / <strong id="progressTotal">0</strong></span>
+                    <span>Open: <strong id="progressOpenPorts">0</strong></span>
+                </div>
+
+            </section>
+
+
+            <!-- STATISTICS -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+                    <span class="stat-label">Target</span>
+                    <strong id="statTarget" class="stat-value">—</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">Open Ports</span>
+                    <strong id="statOpen" class="stat-value">—</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">OS Detection</span>
+                    <strong id="osEstimate" class="stat-value">—</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">Risk Level</span>
+                    <strong id="statRisk" class="stat-value">—</strong>
+                </div>
+
+            </section>
+
+
+            <!-- RESULTS -->
+            <section
+                id="results"
+                class="results-card"
+            >
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Open Ports</h2>
+                        <p>Services discovered during the latest scan.</p>
+                    </div>
+
+                    <span id="scanDuration" class="result-badge">No scan</span>
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Port</th>
+                                <th>Protocol</th>
+                                <th>Service</th>
+                                <th>Version</th>
+                                <th>Confidence</th>
+                                <th>Detection</th>
+                            </tr>
+                        </thead>
+                        <tbody id="openPortsBody">
+                            <tr>
+                                <td colspan="6" class="empty-state">No scan results yet.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+
+            <!-- SECURITY -->
+            <section
+                id="security"
+                class="security-grid"
+            >
+
+                <div class="security-card">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <h2>Security Analysis</h2>
+                            <p>Detected security findings.</p>
+                        </div>
+
+                    </div>
+
+                    <div id="securityFindings">
+                        <div class="empty-state">No security findings yet.</div>
+                    </div>
+
+                </div>
+
+
+                <div class="security-card">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <h2>Vulnerabilities</h2>
+                            <p>Potential vulnerability intelligence.</p>
+                        </div>
+
+                    </div>
+
+                    <div id="vulnerabilityList">
+                        <div class="empty-state">No vulnerability results yet.</div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- OS INFORMATION -->
+            <section class="os-card">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h2>OS Fingerprint</h2>
+                        <p>Operating system estimation based on network characteristics.</p>
+                    </div>
+
+                </div>
+
+
+                    <div class="os-details">
+                        <div>
+                            <span>Estimated OS</span>
+                            <strong id="osEstimate">—</strong>
+                        </div>
+                        <div>
+                            <span>Confidence</span>
+                            <strong id="osConfidence">—</strong>
+                        </div>
+                        <div>
+                            <span>Observed TTL</span>
+                            <strong id="osTTL">—</strong>
+                        </div>
+                        <div>
+                            <span>Reason</span>
+                            <strong id="osReason">—</strong>
+                        </div>
+                    </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer>
+
+                <span>
+                    PortScanner Security Platform
+                </span>
+
+                <span>
+                    Local Security Tool
+                </span>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

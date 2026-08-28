@@ -1,0 +1,254 @@
+{
+    "scanner": "Python Port Scanner",
+    "version": "2.0",
+    "target": "127.0.0.1",
+    "profile": "quick",
+    "scan_started": "2026-08-19T10:39:16.138957",
+    "scan_finished": "2026-08-19T10:39:45.440839",
+    "scan_duration_seconds": 29.3,
+    "ports_scanned": 15,
+    "open_ports_count": 1,
+    "closed_ports_count": 14,
+    "open_ports": [
+        {
+            "port": 445,
+            "service": "Unknown",
+            "version": null,
+            "banner": null,
+            "information": null,
+            "confidence": "LOW",
+            "detection_method": "No protocol identified",
+            "tls": {}
+        }
+    ],
+    "udp_results": [
+        {
+            "port": 53,
+            "state": "ERROR",
+            "service": "DNS",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 0,
+            "message": "[WinError 10054] An existing connection was forcibly closed by the remote host",
+            "address": null
+        },
+        {
+            "port": 67,
+            "state": "ERROR",
+            "service": "DHCP",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 0,
+            "message": "[WinError 10054] An existing connection was forcibly closed by the remote host",
+            "address": null
+        },
+        {
+            "port": 69,
+            "state": "ERROR",
+            "service": "TFTP",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 0,
+            "message": "[WinError 10054] An existing connection was forcibly closed by the remote host",
+            "address": null
+        },
+        {
+            "port": 123,
+            "state": "OPEN|FILTERED",
+            "service": "NTP",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 2.0022,
+            "message": "No UDP response",
+            "address": null
+        },
+        {
+            "port": 137,
+            "state": "OPEN|FILTERED",
+            "service": "NetBIOS",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 2.0053,
+            "message": "No UDP response",
+            "address": null
+        },
+        {
+            "port": 138,
+            "state": "ERROR",
+            "service": "NetBIOS",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 0,
+            "message": "[WinError 10054] An existing connection was forcibly closed by the remote host",
+            "address": null
+        },
+        {
+            "port": 161,
+            "state": "ERROR",
+            "service": "SNMP",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 0,
+            "message": "[WinError 10054] An existing connection was forcibly closed by the remote host",
+            "address": null
+        },
+        {
+            "port": 162,
+            "state": "ERROR",
+            "service": "SNMP Trap",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 0,
+            "message": "[WinError 10054] An existing connection was forcibly closed by the remote host",
+            "address": null
+        },
+        {
+            "port": 500,
+            "state": "ERROR",
+            "service": "IKE",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 0,
+            "message": "[WinError 10054] An existing connection was forcibly closed by the remote host",
+            "address": null
+        },
+        {
+            "port": 514,
+            "state": "ERROR",
+            "service": "Syslog",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 0,
+            "message": "[WinError 10054] An existing connection was forcibly closed by the remote host",
+            "address": null
+        },
+        {
+            "port": 520,
+            "state": "ERROR",
+            "service": "RIP",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 0,
+            "message": "[WinError 10054] An existing connection was forcibly closed by the remote host",
+            "address": null
+        },
+        {
+            "port": 631,
+            "state": "ERROR",
+            "service": "IPP",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 0,
+            "message": "[WinError 10054] An existing connection was forcibly closed by the remote host",
+            "address": null
+        },
+        {
+            "port": 1434,
+            "state": "ERROR",
+            "service": "MS SQL Monitor",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 0,
+            "message": "[WinError 10054] An existing connection was forcibly closed by the remote host",
+            "address": null
+        },
+        {
+            "port": 1900,
+            "state": "OPEN|FILTERED",
+            "service": "SSDP",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 2.004,
+            "message": "No UDP response",
+            "address": null
+        },
+        {
+            "port": 4500,
+            "state": "OPEN|FILTERED",
+            "service": "IPsec NAT-T",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 2.0009,
+            "message": "No UDP response",
+            "address": null
+        },
+        {
+            "port": 5353,
+            "state": "OPEN|FILTERED",
+            "service": "mDNS",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 2.0115,
+            "message": "No UDP response",
+            "address": null
+        },
+        {
+            "port": 5355,
+            "state": "OPEN|FILTERED",
+            "service": "LLMNR",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 2.0157,
+            "message": "No UDP response",
+            "address": null
+        },
+        {
+            "port": 11211,
+            "state": "ERROR",
+            "service": "Memcached",
+            "response": null,
+            "response_length": 0,
+            "response_text": null,
+            "response_time": 0,
+            "message": "[WinError 10054] An existing connection was forcibly closed by the remote host",
+            "address": null
+        }
+    ],
+    "os_fingerprint": {
+        "target": "127.0.0.1",
+        "observed_ttl": 128,
+        "estimated_os": "Windows",
+        "confidence": "MEDIUM",
+        "reason": "Observed TTL=128, which is common for Windows systems",
+        "service_clues": [
+            "TCP/445 SMB detected"
+        ]
+    },
+    "security_analysis": {
+        "overall_risk": "HIGH",
+        "summary": {
+            "INFO": 0,
+            "LOW": 0,
+            "MEDIUM": 0,
+            "HIGH": 1,
+            "CRITICAL": 0
+        },
+        "findings": [
+            {
+                "port": 445,
+                "severity": "HIGH",
+                "title": "SMB service exposed",
+                "description": "SMB is reachable over the network. Exposed SMB services can increase the attack surface of Windows systems.",
+                "recommendation": "Restrict SMB access to trusted networks and hosts. Keep the operating system and SMB software patched."
+            }
+        ]
+    },
+    "vulnerabilities": []
+}

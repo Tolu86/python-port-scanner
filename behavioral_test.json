@@ -1,0 +1,20 @@
+{
+    "scanner": "Python Port Scanner",
+    "version": "1.1",
+    "target": "127.0.0.1",
+    "profile": "custom",
+    "scan_started": "2026-08-18T10:23:09.176260",
+    "scan_finished": "2026-08-18T10:23:09.185211",
+    "scan_duration_seconds": 0.01,
+    "ports_scanned": 1,
+    "open_ports_count": 1,
+    "closed_ports_count": 0,
+    "open_ports": [
+        {
+            "port": 9998,
+            "service": "HTTP",
+            "information": "HTTP/1.0 200 OK",
+            "version": "PortScannerLab/1.0 Python/3.13.3"
+        }
+    ]
+}

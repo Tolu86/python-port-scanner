@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width,
+    initial-scale=1.0"
+>
+
+<title>
+    Port Scanner Security Report
+</title>
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        #f4f6f8;
+
+    color:
+        #1f2933;
+
+}
+
+.container {
+
+    width: 92%;
+
+    max-width: 1400px;
+
+    margin:
+        30px auto;
+
+}
+
+.header {
+
+    background:
+        #111827;
+
+    color:
+        white;
+
+    padding:
+        35px;
+
+    border-radius:
+        12px;
+
+    margin-bottom:
+        25px;
+
+}
+
+.header h1 {
+
+    margin:
+        0 0 10px 0;
+
+    font-size:
+        32px;
+
+}
+
+.header p {
+
+    margin:
+        5px 0;
+
+}
+
+.grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                200px,
+                1fr
+            )
+        );
+
+    gap:
+        15px;
+
+    margin-bottom:
+        25px;
+
+}
+
+.card {
+
+    background:
+        white;
+
+    padding:
+        22px;
+
+    border-radius:
+        10px;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            0.06
+        );
+
+}
+
+.card h3 {
+
+    margin-top:
+        0;
+
+    color:
+        #4b5563;
+
+}
+
+.metric {
+
+    font-size:
+        30px;
+
+    font-weight:
+        bold;
+
+}
+
+section {
+
+    background:
+        white;
+
+    padding:
+        25px;
+
+    border-radius:
+        10px;
+
+    margin-bottom:
+        25px;
+
+    box-shadow:
+        0 2px 8px
+        rgba(
+            0,
+            0,
+            0,
+            0.06
+        );
+
+}
+
+section h2 {
+
+    margin-top:
+        0;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    padding-bottom:
+        12px;
+
+}
+
+table {
+
+    width:
+        100%;
+
+    border-collapse:
+        collapse;
+
+    margin-top:
+        15px;
+
+}
+
+th,
+td {
+
+    padding:
+        12px;
+
+    text-align:
+        left;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    vertical-align:
+        top;
+
+}
+
+th {
+
+    background:
+        #f9fafb;
+
+}
+
+tr:hover {
+
+    background:
+        #f9fafb;
+
+}
+
+.open {
+
+    font-weight:
+        bold;
+
+}
+
+.badge {
+
+    display:
+        inline-block;
+
+    padding:
+        5px 9px;
+
+    border-radius:
+        6px;
+
+    font-size:
+        12px;
+
+    font-weight:
+        bold;
+
+}
+
+.critical {
+
+    background:
+        #fee2e2;
+
+}
+
+.high {
+
+    background:
+        #ffedd5;
+
+}
+
+.medium {
+
+    background:
+        #fef3c7;
+
+}
+
+.low {
+
+    background:
+        #dcfce7;
+
+}
+
+.unknown {
+
+    background:
+        #e5e7eb;
+
+}
+
+.finding {
+
+    border:
+        1px solid #e5e7eb;
+
+    padding:
+        18px;
+
+    margin-bottom:
+        15px;
+
+    border-radius:
+        8px;
+
+}
+
+.finding-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        15px;
+
+}
+
+.finding-header h3 {
+
+    margin:
+        0;
+
+}
+
+.tls-card {
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius:
+        8px;
+
+    padding:
+        18px;
+
+    margin-bottom:
+        15px;
+
+}
+
+.empty {
+
+    padding:
+        20px;
+
+    background:
+        #f9fafb;
+
+    border-radius:
+        8px;
+
+}
+
+.footer {
+
+    text-align:
+        center;
+
+    color:
+        #6b7280;
+
+    padding:
+        25px;
+
+}
+
+a {
+
+    text-decoration:
+        none;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<div class="header">
+
+<h1>
+    Port Scanner Security Report
+</h1>
+
+<p>
+    <strong>Target:</strong>
+    127.0.0.1
+</p>
+
+<p>
+    <strong>Scan Profile:</strong>
+    custom
+</p>
+
+<p>
+    <strong>Started:</strong>
+    2026-08-19T10:26:16.629764
+</p>
+
+<p>
+    <strong>Finished:</strong>
+    2026-08-19T10:26:17.489321
+</p>
+
+<p>
+    <strong>Generated:</strong>
+    2026-08-19 10:26:17
+</p>
+
+</div>
+
+
+<!-- =====================================================
+     SUMMARY
+====================================================== -->
+
+<div class="grid">
+
+
+<div class="card">
+
+<h3>
+    Ports Scanned
+</h3>
+
+<div class="metric">
+    1
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+    Open TCP Ports
+</h3>
+
+<div class="metric">
+    0
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+    Closed TCP Ports
+</h3>
+
+<div class="metric">
+    1
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+    Vulnerabilities
+</h3>
+
+<div class="metric">
+    0
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+    Overall Risk
+</h3>
+
+<div class="metric">
+
+<span class="badge unknown">
+
+    INFO
+
+</span>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+    Scan Duration
+</h3>
+
+<div class="metric">
+
+0.86s
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     TCP
+====================================================== -->
+
+<section>
+
+<h2>
+    TCP Port Findings
+</h2>
+
+
+        <div class="empty">
+            No open TCP ports were detected.
+        </div>
+        
+
+</section>
+
+
+<!-- =====================================================
+     UDP
+====================================================== -->
+
+<section>
+
+<h2>
+    UDP Findings
+</h2>
+
+
+        <div class="empty">
+            No UDP findings were reported.
+        </div>
+        
+
+</section>
+
+
+<!-- =====================================================
+     OS
+====================================================== -->
+
+<section>
+
+<h2>
+    Operating System Fingerprint
+</h2>
+
+<p>
+
+<strong>
+    Estimated OS:
+</strong>
+
+Windows
+
+</p>
+
+<p>
+
+<strong>
+    Confidence:
+</strong>
+
+MEDIUM
+
+</p>
+
+<p>
+
+<strong>
+    Observed TTL:
+</strong>
+
+128
+
+</p>
+
+<p>
+
+<strong>
+    Reason:
+</strong>
+
+Observed TTL=128, which is common for Windows systems
+
+</p>
+
+</section>
+
+
+<!-- =====================================================
+     SECURITY
+====================================================== -->
+
+<section>
+
+<h2>
+    Security Analysis
+</h2>
+
+
+        <div class="empty">
+            No security findings were reported.
+        </div>
+        
+
+</section>
+
+
+<!-- =====================================================
+     VULNERABILITIES
+====================================================== -->
+
+<section>
+
+<h2>
+    Vulnerability Intelligence
+</h2>
+
+
+        <div class="empty">
+            No matching vulnerabilities were found.
+        </div>
+        
+
+</section>
+
+
+<!-- =====================================================
+     TLS
+====================================================== -->
+
+<section>
+
+<h2>
+    TLS / Certificate Information
+</h2>
+
+
+        <div class="empty">
+            No TLS information was detected.
+        </div>
+        
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<div class="footer">
+
+Generated by
+<strong>
+    Python Port Scanner
+</strong>
+
+</div>
+
+
+</div>
+
+</body>
+
+</html>
